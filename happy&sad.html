@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Happy Sad Face</title>
+    <script src="confetti.js"></script>
+    <style>
+        button .emj{
+            background: none;
+            border: none;
+        }
+
+        .emj{
+            background: none;
+            border: none;
+            font-size: 90px;
+        }
+    </style>
+    <script>
+        let cnt = 0, nn = 4
+        function change(id) {
+            cnt++;
+            let al = document.getElementById(id);
+            if(al.innerHTML=="☹️") al.innerHTML = "🙂"
+            else al.innerHTML = "☹️"
+            let id2 =  Number(id) + 1
+            id2 = String(id2)
+            //console.log(id2)
+            let al2 = document.getElementById(id2)
+            if(al2) {
+                if(al2.innerHTML=="☹️") al2.innerHTML = "🙂"
+                else al2.innerHTML = "☹️"
+            }
+            
+
+            let id3 = Number(id) - 1
+            id3 = String(id3)
+            //console.log(id3)
+            let al3 = document.getElementById(id3)
+            if(al3) {
+                if(al3.innerHTML=="☹️") al3.innerHTML = "🙂"
+                else al3.innerHTML = "☹️"
+            }
+            document.getElementById("cnt").innerHTML = cnt
+            let fl = 0
+            for(i=1;i<=nn;i++) {
+                let a = document.getElementById(i);
+                if(a.innerHTML == "☹️") fl=1
+            }
+
+            console.log(fl)
+            if(fl==0) {
+                // startConfetti()
+                // setTimeout(() => stopConfetti(), 1000)
+                let msg = "🙂 🙂 You solved it in " + cnt + " moves!!"
+                setTimeout(()=> alert(msg), 100)
+            }
+        }
+
+        function reset(n) {
+            cnt = 0;
+            document.getElementById("cnt").innerHTML = cnt
+            let htm=""
+            nn = n
+            for(i = 1; i <= n; i++) {
+                htm += "<button class=\"emj\" onclick=\"change(this.id)\" id=\"" +i+"\">" + ((i%2==1) ? "🙂" : "☹️") + "</button>"
+            }
+            
+            document.getElementById("all").innerHTML = htm
+            if(n>=11 && n<=15) {
+                for(i = 1; i <= n; i++) {
+                    document.getElementById(i).style.fontSize = "60px"
+                }
+            }
+            if(n>=16 && n<=20) {
+                for(i = 1; i <= n; i++) {
+                    document.getElementById(i).style.fontSize = "40px"
+                }
+            }
+        }
+
+        function generate() {
+            let f = document.getElementById("times")
+            if(f.value<=2) alert("It's too little")
+            if(f.value>20) alert("Its too much")
+            else {
+                reset(f.value)
+            }
+        }
+    
+    </script>
+</head>
+<body onload="reset(4)">
+    <!-- <div onclick="change(this.id)" id="1" style="font-size: 90px">🙂</div> -->
+    <input id="times" name="times" type="number" value="4"/> <button onclick="generate()">Generate Emoji</button> <button onclick="generate()">Reset</button>
+    <div id="all" style="text-align: center; white-space: nowrap;"></div> <br>
+    <div style="font-size: 30px; text-align: center;">Clicks: <span id="cnt">0</span></div>
+    <!-- <button onclick="reset(4)" style="border:none; background: white;">Reset</div> -->
+</body>
+
+
+</html>
