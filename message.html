@@ -10,11 +10,11 @@
     <title>Decode The Message!</title>
 </head>
 <body>
-    <div class="flex flex-row">
-    <div class="flex-1 pl-20 pt-12">
+    <div class="flex flex-col md:flex-row">
+    <div class="flex-1 pt-3 pl-3 md:pl-20 md:pt-12">
         <img src="message_.png" alt="What is the message!" class="h-auto w-96">
     </div>
-    <div class="flex-1 py-12 pr-12">
+    <div class="flex-1 pt-5 pl-2 md:py-12 md:pr-12">
         <form class="form" id="form">   
             <label for="message" class="mb-2 text-sm font-medium text-gray-900 sr-only">What is the message!</label>
             <div class="relative">
@@ -37,26 +37,6 @@
 
 </body>
 <script>
-
-
-
-// $(function () {
-//             var frm = $('#form');
-//             frm.submit(function (ev) {
-//                 var val = $('#search').val().toLowerCase();
-
-//                 if(val==="dreambig") {
-//                     poof();
-//                     alert("YAY! It's correct!");
-                    
-//                 }
-//                 else {
-//                     alert("OOPS! WRONG!")
-//                 }
-//                 ev.preventDefault();
-//             });
-// });
-
 'use strict';
 
 window.onload = function() {
@@ -290,7 +270,7 @@ window.onload = function() {
        
         if(xf === "dreambig") {
             poof();
-            alert("YAY! CORRECT! 🎉")
+            
         }
         else {
             alert("ITS WRONG! TRY AGAIN! 😅")
